@@ -5,135 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Know Your Flags · 2026 FIFA World Cup</title>
   <style>
-    /* ── THEME VARIABLES ── */
     :root {
-      --bg:      #080d1a; --bg-card: #111827; --bg-hover: #1a2540;
-      --text:    #f0f4ff; --muted:   #7c8db0; --border:   #1e2d52;
-      --gold:    #f5c518; --gold-lt: #ffe57a; --red:      #e63946;
-      --ok:      #06d6a0; --err:     #ef476f;
-      --shadow:  rgba(0,0,0,.45);
-      --hero-glow: rgba(245,197,24,.13);
+      --bg:#080d1a; --bg-card:#111827; --bg-hover:#1a2540;
+      --text:#f0f4ff; --muted:#7c8db0; --border:#1e2d52;
+      --gold:#f5c518; --gold-lt:#ffe57a; --red:#e63946;
+      --ok:#06d6a0; --err:#ef476f; --shadow:rgba(0,0,0,.45);
+      --hero-glow:rgba(245,197,24,.13);
     }
     [data-theme="light"] {
-      --bg:      #f0f4fc; --bg-card: #ffffff; --bg-hover: #e6edf8;
-      --text:    #0f172a; --muted:   #5a6a8a; --border:   #dde3f2;
-      --gold:    #b8890a; --gold-lt: #d4a017; --red:      #c0273a;
-      --ok:      #047857; --err:     #c0273a;
-      --shadow:  rgba(0,0,0,.10);
-      --hero-glow: rgba(180,130,10,.09);
+      --bg:#f0f4fc; --bg-card:#ffffff; --bg-hover:#e6edf8;
+      --text:#0f172a; --muted:#5a6a8a; --border:#dde3f2;
+      --gold:#b8890a; --gold-lt:#d4a017; --red:#c0273a;
+      --ok:#047857; --err:#c0273a;
+      --shadow:rgba(0,0,0,.10); --hero-glow:rgba(180,130,10,.09);
     }
-
-    /* ── RESET & BASE ── */
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
     body{
       font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
-      background:var(--bg); color:var(--text); min-height:100vh;
-      transition:background .3s,color .3s;
+      background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s;
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     header{
       position:sticky;top:0;z-index:100;
-      background:var(--bg);border-bottom:1px solid var(--border);
-      padding:13px 24px;
+      border-bottom:1px solid var(--border);padding:13px 24px;
       transition:background .3s,border-color .3s;
     }
     [data-theme="dark"] header{background:rgba(8,13,26,.96);backdrop-filter:blur(14px);}
     [data-theme="light"] header{background:rgba(240,244,252,.95);backdrop-filter:blur(14px);}
-
     .hdr{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
     .logo{display:flex;align-items:center;gap:11px;}
-    .logo-icon{font-size:32px;line-height:1;}
+    .logo-icon{font-size:30px;}
     .logo h1{
       font-size:17px;font-weight:800;
       background:linear-gradient(90deg,var(--gold),var(--gold-lt));
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
     }
-    .logo p{font-size:10.5px;color:var(--muted);letter-spacing:.05em;margin-top:1px;}
-
-    .hdr-right{display:flex;align-items:center;gap:8px;}
-
-    /* Mode toggle */
+    .logo p{font-size:10px;color:var(--muted);letter-spacing:.05em;margin-top:1px;}
+    .hdr-right{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
     .mode-btn{
-      width:36px;height:36px;border-radius:50%;
-      border:1.5px solid var(--border);background:transparent;
-      font-size:18px;cursor:pointer;transition:all .2s;
+      width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border);
+      background:transparent;font-size:17px;cursor:pointer;transition:all .2s;
       display:flex;align-items:center;justify-content:center;
     }
     .mode-btn:hover{border-color:var(--gold);background:rgba(245,197,24,.1);}
-
-    /* Tabs */
     .tabs{display:flex;gap:3px;background:rgba(128,128,128,.1);border-radius:12px;padding:4px;}
     .tab{
-      padding:7px 16px;border-radius:8px;border:none;background:transparent;
-      color:var(--muted);font-size:13.5px;font-weight:500;cursor:pointer;
-      transition:all .2s;white-space:nowrap;
+      padding:7px 15px;border-radius:8px;border:none;background:transparent;
+      color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap;
     }
     .tab:hover{color:var(--text);}
     .tab.on{background:var(--gold);color:#080d1a;font-weight:700;}
 
-    /* ── HERO ── */
+    /* HERO */
     .hero{
-      text-align:center;padding:50px 24px 38px;
+      text-align:center;padding:48px 24px 36px;
       background:radial-gradient(ellipse 80% 55% at 50% 0%,var(--hero-glow) 0%,transparent 70%);
       transition:background .3s;
     }
-    .hero h2{font-size:clamp(24px,4.5vw,50px);font-weight:900;line-height:1.15;margin-bottom:10px;}
+    .hero h2{font-size:clamp(23px,4.5vw,50px);font-weight:900;line-height:1.15;margin-bottom:9px;}
     .hero h2 em{font-style:normal;color:var(--gold);}
-    .hero-sub{color:var(--muted);font-size:15px;margin-bottom:28px;}
-    .stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
-    .stat-n{font-size:34px;font-weight:800;color:var(--gold);}
-    .stat-l{font-size:11.5px;color:var(--muted);margin-top:2px;}
+    .hero-sub{color:var(--muted);font-size:14px;margin-bottom:26px;}
+    .stats{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;}
+    .stat-n{font-size:32px;font-weight:800;color:var(--gold);}
+    .stat-l{font-size:11px;color:var(--muted);margin-top:2px;}
 
-    /* ── MAIN ── */
-    main{max-width:1400px;margin:0 auto;padding:28px 24px;}
+    /* MAIN */
+    main{max-width:1400px;margin:0 auto;padding:26px 24px;}
     .sec{display:none;} .sec.on{display:block;}
 
-    /* ── CONTROLS ── */
-    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:20px;}
+    /* LANGUAGE SWITCH */
+    .lang-row{display:flex;align-items:center;gap:7px;margin-bottom:14px;flex-wrap:wrap;}
+    .lang-lbl{font-size:12px;color:var(--muted);white-space:nowrap;}
+    .lbtn{
+      padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);
+      background:transparent;font-size:12.5px;font-weight:500;cursor:pointer;
+      color:var(--muted);transition:all .2s;
+    }
+    .lbtn:hover{color:var(--text);border-color:var(--muted);}
+    .lbtn.on{border-color:var(--gold);color:var(--gold);background:rgba(245,197,24,.12);font-weight:700;}
+
+    /* CONTROLS */
+    .controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:18px;}
     .srch{position:relative;flex:1;min-width:180px;}
-    .srch svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);}
+    .srch svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);}
     .srch input{
-      width:100%;padding:10px 14px 10px 38px;
+      width:100%;padding:9px 13px 9px 36px;
       background:var(--bg-card);border:1.5px solid var(--border);border-radius:10px;
-      color:var(--text);font-size:14px;outline:none;transition:border-color .2s,background .3s;
+      color:var(--text);font-size:13.5px;outline:none;transition:border-color .2s,background .3s;
     }
     .srch input::placeholder{color:var(--muted);}
     .srch input:focus{border-color:var(--gold);}
     .filters{display:flex;gap:5px;flex-wrap:wrap;}
     .fbtn{
-      padding:6px 13px;border-radius:20px;border:1.5px solid var(--border);
-      background:transparent;color:var(--muted);font-size:12.5px;cursor:pointer;transition:all .2s;
+      padding:6px 12px;border-radius:20px;border:1.5px solid var(--border);
+      background:transparent;color:var(--muted);font-size:12px;cursor:pointer;transition:all .2s;
     }
-    .fbtn:hover{color:var(--text);border-color:var(--muted);}
+    .fbtn:hover{color:var(--text);}
     .fbtn.on{border-color:var(--gold);color:var(--gold);background:rgba(245,197,24,.1);}
-    .count-lbl{color:var(--muted);font-size:13px;margin-bottom:14px;}
+    .count-lbl{color:var(--muted);font-size:12.5px;margin-bottom:13px;}
 
-    /* ── CARD GRID ── */
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(188px,1fr));gap:13px;}
+    /* CARD GRID */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:12px;}
     .card{
       background:var(--bg-card);border:1.5px solid var(--border);border-radius:16px;
-      padding:20px 14px 16px;cursor:pointer;text-align:center;
+      padding:20px 13px 15px;cursor:pointer;text-align:center;
       transition:transform .25s,border-color .25s,box-shadow .25s,background .3s;
-      position:relative;overflow:hidden;
-      animation:fadeUp .32s ease both;
+      position:relative;overflow:hidden;animation:fadeUp .32s ease both;
     }
     @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-    .card:hover{
-      transform:translateY(-5px);border-color:rgba(245,197,24,.5);
-      box-shadow:0 10px 30px var(--shadow);background:var(--bg-hover);
-    }
-    .card::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:2px;
-      background:linear-gradient(90deg,var(--gold),var(--red));
-      opacity:0;transition:opacity .25s;
-    }
+    .card:hover{transform:translateY(-5px);border-color:rgba(245,197,24,.5);box-shadow:0 10px 28px var(--shadow);background:var(--bg-hover);}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--red));opacity:0;transition:opacity .25s;}
     .card:hover::before{opacity:1;}
-    .c-flag{font-size:52px;line-height:1;display:block;margin-bottom:11px;}
-    .c-en{font-size:15px;font-weight:700;margin-bottom:2px;}
-    .c-zh{font-size:12px;color:var(--muted);margin-bottom:9px;}
-    .badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:10.5px;font-weight:600;}
+    .c-flag{font-size:50px;line-height:1;display:block;margin-bottom:10px;}
+    .c-primary{font-size:14.5px;font-weight:700;margin-bottom:4px;line-height:1.3;}
+    .c-others{font-size:11px;color:var(--muted);margin-bottom:9px;line-height:1.5;}
+    .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600;}
     .UEFA    {background:rgba(77,166,255,.18);color:#4da6ff;}
     .CONMEBOL{background:rgba(77,255,155,.15);color:#3dcc7a;}
     .CONCACAF{background:rgba(255,140,102,.18);color:#ff8c66;}
@@ -147,131 +135,101 @@
     [data-theme="light"] .AFC     {color:#8040c0;}
     [data-theme="light"] .OFC     {color:#0078a0;}
 
-    /* ── MODAL ── */
-    .ov{
-      display:none;position:fixed;inset:0;background:rgba(0,0,0,.68);
-      z-index:500;align-items:center;justify-content:center;
-      backdrop-filter:blur(7px);
-    }
+    /* MODAL */
+    .ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(7px);}
     .ov.open{display:flex;}
     .modal{
       background:var(--bg-card);border:1.5px solid var(--border);border-radius:24px;
-      padding:30px;max-width:480px;width:93%;position:relative;
-      animation:popIn .26s ease;max-height:90vh;overflow-y:auto;
+      padding:28px;max-width:500px;width:93%;position:relative;
+      animation:popIn .24s ease;max-height:92vh;overflow-y:auto;
       transition:background .3s,border-color .3s;
     }
-    @keyframes popIn{from{transform:scale(.94) translateY(14px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
-    .modal-x{
-      position:absolute;top:14px;right:16px;background:none;border:none;
-      color:var(--muted);font-size:22px;cursor:pointer;line-height:1;
-    }
+    @keyframes popIn{from{transform:scale(.93) translateY(14px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+    .modal-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:21px;cursor:pointer;line-height:1;}
     .modal-x:hover{color:var(--text);}
-    .m-flag{font-size:76px;display:block;text-align:center;margin-bottom:13px;}
-    .m-en{font-size:26px;font-weight:800;text-align:center;margin-bottom:3px;}
-    .m-zh{font-size:15px;color:var(--gold);text-align:center;margin-bottom:18px;}
-    .m-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;}
+    .m-flag{font-size:72px;display:block;text-align:center;margin-bottom:12px;}
+    .m-en{font-size:24px;font-weight:800;text-align:center;margin-bottom:2px;}
+    .m-zh{font-size:14px;color:var(--gold);text-align:center;margin-bottom:16px;}
+
+    /* 4-language section */
+    .m-langs{
+      background:rgba(128,128,128,.06);border:1.5px solid var(--border);
+      border-radius:14px;padding:14px 16px;margin-bottom:14px;
+    }
+    .m-langs-hd{font-size:10.5px;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:11px;}
+    .m-lang-row{
+      display:flex;align-items:center;gap:10px;
+      padding:6px 0;border-bottom:1px solid var(--border);
+    }
+    .m-lang-row:last-child{border-bottom:none;}
+    .m-lang-flag{font-size:18px;width:24px;text-align:center;flex-shrink:0;}
+    .m-lang-tag{font-size:10px;color:var(--muted);width:46px;flex-shrink:0;}
+    .m-lang-name{font-size:15px;font-weight:600;flex:1;}
+    .m-lang-roman{font-size:11px;color:var(--muted);font-style:italic;}
+
+    .m-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:13px;}
     .m-cell{background:rgba(128,128,128,.07);border-radius:10px;padding:11px 12px;}
-    .m-lbl{font-size:10.5px;color:var(--muted);margin-bottom:3px;}
-    .m-val{font-size:13.5px;font-weight:600;}
+    .m-lbl{font-size:10px;color:var(--muted);margin-bottom:3px;}
+    .m-val{font-size:13px;font-weight:600;}
+    .m-box{background:rgba(245,197,24,.07);border:1.5px solid rgba(245,197,24,.2);border-radius:12px;padding:13px 15px;}
+    .m-box-hd{font-size:10.5px;font-weight:700;color:var(--gold);margin-bottom:7px;letter-spacing:.04em;}
+    .m-en-txt{font-size:13px;line-height:1.7;color:var(--text);margin-bottom:9px;}
+    .m-zh-txt{font-size:12.5px;line-height:1.7;color:var(--muted);border-top:1px solid rgba(245,197,24,.15);padding-top:9px;}
 
-    /* Meaning box */
-    .m-box{
-      background:rgba(245,197,24,.07);border:1.5px solid rgba(245,197,24,.2);
-      border-radius:12px;padding:14px 16px;
-    }
-    .m-box-hd{font-size:11px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:.04em;}
-    .m-en-txt{font-size:13.5px;line-height:1.7;color:var(--text);margin-bottom:10px;}
-    .m-zh-txt{
-      font-size:13px;line-height:1.7;color:var(--muted);
-      border-top:1px solid rgba(245,197,24,.15);padding-top:10px;
-    }
-
-    /* ── GROUPS ── */
-    .g-hd{text-align:center;margin-bottom:26px;}
-    .g-hd h3{font-size:22px;font-weight:800;margin-bottom:5px;}
-    .g-hd p{color:var(--muted);font-size:13.5px;}
-    .gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;}
+    /* GROUPS */
+    .g-hd{text-align:center;margin-bottom:24px;}
+    .g-hd h3{font-size:21px;font-weight:800;margin-bottom:5px;}
+    .g-hd p{color:var(--muted);font-size:13px;}
+    .gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:15px;}
     .gc{background:var(--bg-card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:background .3s,border-color .3s;}
-    .gc-hd{
-      background:linear-gradient(135deg,rgba(245,197,24,.17),rgba(230,57,70,.09));
-      padding:11px 15px;display:flex;align-items:center;justify-content:space-between;
-      border-bottom:1.5px solid var(--border);
-    }
-    .gc-letter{font-size:21px;font-weight:900;color:var(--gold);}
-    .gc-sub{font-size:11.5px;color:var(--muted);}
-    .gc-teams{padding:5px 7px;}
-    .gc-team{
-      display:flex;align-items:center;gap:9px;padding:8px 9px;
-      border-radius:8px;cursor:pointer;transition:background .15s;
-    }
+    .gc-hd{background:linear-gradient(135deg,rgba(245,197,24,.17),rgba(230,57,70,.09));padding:11px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid var(--border);}
+    .gc-letter{font-size:20px;font-weight:900;color:var(--gold);}
+    .gc-sub{font-size:11px;color:var(--muted);}
+    .gc-teams{padding:4px 6px;}
+    .gc-team{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:8px;cursor:pointer;transition:background .15s;}
     .gc-team:hover{background:rgba(128,128,128,.08);}
-    .gc-tf{font-size:22px;width:28px;text-align:center;flex-shrink:0;}
-    .gc-en{font-size:13.5px;font-weight:600;}
-    .gc-zh{font-size:11px;color:var(--muted);}
+    .gc-tf{font-size:21px;width:26px;text-align:center;flex-shrink:0;}
+    .gc-en{font-size:13px;font-weight:600;}
+    .gc-sub-names{font-size:10.5px;color:var(--muted);}
 
-    /* ── QUIZ ── */
+    /* QUIZ */
     .qw{max-width:580px;margin:0 auto;}
-    .q-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;}
+    .q-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
     .qs{text-align:center;}
-    .qs-n{font-size:30px;font-weight:800;color:var(--gold);}
-    .qs-l{font-size:11px;color:var(--muted);margin-top:1px;}
-    .streak{
-      display:flex;align-items:center;gap:5px;
-      background:rgba(245,197,24,.1);border:1.5px solid rgba(245,197,24,.3);
-      border-radius:20px;padding:7px 15px;font-size:14px;font-weight:700;color:var(--gold);
-    }
-    .qcard{
-      background:var(--bg-card);border:1.5px solid var(--border);border-radius:22px;
-      padding:42px 28px;text-align:center;margin-bottom:18px;
-      transition:background .3s,border-color .3s;
-    }
-    .qf{font-size:90px;display:block;margin-bottom:10px;}
+    .qs-n{font-size:28px;font-weight:800;color:var(--gold);}
+    .qs-l{font-size:10.5px;color:var(--muted);margin-top:1px;}
+    .streak{display:flex;align-items:center;gap:5px;background:rgba(245,197,24,.1);border:1.5px solid rgba(245,197,24,.3);border-radius:20px;padding:7px 14px;font-size:13.5px;font-weight:700;color:var(--gold);}
+    .qcard{background:var(--bg-card);border:1.5px solid var(--border);border-radius:22px;padding:40px 26px;text-align:center;margin-bottom:16px;transition:background .3s,border-color .3s;}
+    .qf{font-size:88px;display:block;margin-bottom:9px;}
     .qf.shake{animation:shake .38s ease;}
     @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-11px);}75%{transform:translateX(11px);}}
-    .qf.bounce{animation:bounce .32s ease;}
-    @keyframes bounce{0%,100%{transform:scale(1);}50%{transform:scale(1.17);}}
-    .qhint{color:var(--muted);font-size:14.5px;}
-    .opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:15px;}
+    .qf.bounce{animation:bounce .3s ease;}
+    @keyframes bounce{0%,100%{transform:scale(1);}50%{transform:scale(1.16);}}
+    .qhint{color:var(--muted);font-size:14px;}
+    .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
     .opt{
-      padding:14px 10px;background:var(--bg-card);border:2px solid var(--border);
-      border-radius:12px;color:var(--text);font-size:14.5px;font-weight:600;
+      padding:13px 10px;background:var(--bg-card);border:2px solid var(--border);
+      border-radius:12px;color:var(--text);font-size:14px;font-weight:600;
       cursor:pointer;transition:all .2s;text-align:center;line-height:1.35;
     }
     .opt:hover:not(:disabled){border-color:var(--gold);background:rgba(245,197,24,.07);}
     .opt.ok{border-color:var(--ok);background:rgba(6,214,160,.13);color:var(--ok);}
     .opt.no{border-color:var(--err);background:rgba(239,71,111,.13);color:var(--err);}
-    .opt small{display:block;font-size:11px;font-weight:400;opacity:.75;margin-top:1px;}
-    .nxt{
-      width:100%;padding:14px;background:var(--gold);border:none;border-radius:12px;
-      color:#080d1a;font-size:15.5px;font-weight:700;cursor:pointer;
-      transition:all .2s;display:none;
-    }
+    .opt small{display:block;font-size:10.5px;font-weight:400;opacity:.7;margin-top:2px;}
+    .nxt{width:100%;padding:13px;background:var(--gold);border:none;border-radius:12px;color:#080d1a;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;display:none;}
     .nxt.show{display:block;}
     .nxt:hover{filter:brightness(1.08);transform:translateY(-1px);}
-    .prog{display:flex;gap:4px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+    .prog{display:flex;gap:3px;justify-content:center;margin-top:14px;flex-wrap:wrap;}
     .dot{width:8px;height:8px;border-radius:50%;background:var(--border);}
     .dot.ok{background:var(--ok);} .dot.no{background:var(--err);}
-    .acc{text-align:center;margin-top:10px;font-size:13px;color:var(--muted);}
+    .acc{text-align:center;margin-top:9px;font-size:12.5px;color:var(--muted);}
     .acc em{font-style:normal;color:var(--gold);font-weight:700;}
 
-    /* ── FOOTER ── */
-    footer{
-      text-align:center;padding:28px 24px;color:var(--muted);font-size:13px;
-      border-top:1px solid var(--border);margin-top:44px;transition:border-color .3s;
-    }
+    footer{text-align:center;padding:26px 24px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--border);margin-top:42px;transition:border-color .3s;}
     footer strong{color:var(--gold);}
 
-    /* ── RESPONSIVE ── */
-    @media(max-width:600px){
-      .opts{grid-template-columns:1fr;}
-      .m-grid{grid-template-columns:1fr;}
-      .stats{gap:20px;}
-      .tab{padding:7px 10px;font-size:12.5px;}
-    }
-    @media(max-width:400px){
-      .tab{padding:6px 8px;font-size:12px;}
-      .hdr{gap:6px;}
-    }
+    @media(max-width:580px){.opts{grid-template-columns:1fr;}.m-grid{grid-template-columns:1fr;}.stats{gap:18px;}.tab{padding:6px 10px;font-size:12px;}}
+    @media(max-width:400px){.tab{padding:6px 7px;font-size:11.5px;}}
   </style>
 </head>
 <body>
@@ -289,8 +247,8 @@
       <button class="mode-btn" id="modeBtn" onclick="toggleMode()" title="Toggle theme">🌙</button>
       <nav class="tabs">
         <button class="tab on" onclick="go('flags',this)">🏴 Flags</button>
-        <button class="tab"    onclick="go('groups',this)">⚽ Groups</button>
-        <button class="tab"    onclick="go('quiz',this)">🎯 Quiz</button>
+        <button class="tab"   onclick="go('groups',this)">⚽ Groups</button>
+        <button class="tab"   onclick="go('quiz',this)">🎯 Quiz</button>
       </nav>
     </div>
   </div>
@@ -298,22 +256,31 @@
 
 <div class="hero">
   <h2>Learn <em>48</em> World Cup Flags 🌍</h2>
-  <p class="hero-sub">2026 FIFA World Cup · First 48-team edition · Co-hosted by USA, Canada &amp; Mexico</p>
+  <p class="hero-sub">2026 FIFA World Cup · First 48-team edition · Co-hosted by USA, Canada &amp; Mexico<br>用英文、中文、日本語、한국어认识世界各国国旗</p>
   <div class="stats">
     <div><div class="stat-n">48</div><div class="stat-l">Teams · 球队</div></div>
+    <div><div class="stat-n">4</div><div class="stat-l">Languages · 语言</div></div>
     <div><div class="stat-n">12</div><div class="stat-l">Groups · 小组</div></div>
     <div><div class="stat-n">104</div><div class="stat-l">Matches · 场比赛</div></div>
-    <div><div class="stat-n">6</div><div class="stat-l">Continents · 大洲</div></div>
   </div>
 </div>
 
 <main>
   <!-- FLAGS -->
   <div id="sec-flags" class="sec on">
+    <div class="lang-row">
+      <span class="lang-lbl">Learn in · 显示语言：</span>
+      <div id="lbtns">
+        <button class="lbtn on" data-l="en">🇬🇧 EN</button>
+        <button class="lbtn" data-l="zh">🇨🇳 中文</button>
+        <button class="lbtn" data-l="ja">🇯🇵 日本語</button>
+        <button class="lbtn" data-l="ko">🇰🇷 한국어</button>
+      </div>
+    </div>
     <div class="controls">
       <div class="srch">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        <input id="qi" type="text" placeholder="Search country name / 搜索国家名…" oninput="render()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="qi" type="text" placeholder="Search in any language · 任意语言搜索…" oninput="render()">
       </div>
       <div class="filters" id="fbtns">
         <button class="fbtn on" data-f="">All · 全部</button>
@@ -333,7 +300,7 @@
   <div id="sec-groups" class="sec">
     <div class="g-hd">
       <h3>🏆 Group Stage · 小组阶段</h3>
-      <p>12 groups of 4 · Top 2 + best 8 third-place teams advance · 12组，每组4队，每组前2名及8支最佳第三名晋级</p>
+      <p>12 groups of 4 · Top 2 + best 8 third-place teams advance · 每组前2名及8支最佳第三名晋级</p>
     </div>
     <div class="gg" id="gg"></div>
   </div>
@@ -348,10 +315,10 @@
       </div>
       <div class="qcard">
         <span class="qf" id="Qf">🏴</span>
-        <p class="qhint">Which country does this flag belong to? · 这是哪个国家的国旗？</p>
+        <p class="qhint" id="Qhint">Which country does this flag belong to?</p>
       </div>
       <div class="opts" id="Qo"></div>
-      <button class="nxt" id="Qn" onclick="nextQ()">Next Question · 下一题 →</button>
+      <button class="nxt" id="Qn" onclick="nextQ()">Next · 下一题 →</button>
       <div class="prog" id="Qp"></div>
       <div class="acc" id="Qa"></div>
     </div>
@@ -365,11 +332,40 @@
     <span class="m-flag" id="Mf"></span>
     <h2 class="m-en" id="Men"></h2>
     <p class="m-zh" id="Mzh"></p>
+
+    <div class="m-langs">
+      <div class="m-langs-hd">🗣️ HOW TO SAY IT · 各语言叫法</div>
+      <div class="m-lang-row">
+        <span class="m-lang-flag">🇬🇧</span>
+        <span class="m-lang-tag">English</span>
+        <span class="m-lang-name" id="ML_en"></span>
+        <span class="m-lang-roman"></span>
+      </div>
+      <div class="m-lang-row">
+        <span class="m-lang-flag">🇨🇳</span>
+        <span class="m-lang-tag">中文</span>
+        <span class="m-lang-name" id="ML_zh"></span>
+        <span class="m-lang-roman" id="ML_zhR"></span>
+      </div>
+      <div class="m-lang-row">
+        <span class="m-lang-flag">🇯🇵</span>
+        <span class="m-lang-tag">日本語</span>
+        <span class="m-lang-name" id="ML_ja"></span>
+        <span class="m-lang-roman" id="ML_jaR"></span>
+      </div>
+      <div class="m-lang-row">
+        <span class="m-lang-flag">🇰🇷</span>
+        <span class="m-lang-tag">한국어</span>
+        <span class="m-lang-name" id="ML_ko"></span>
+        <span class="m-lang-roman" id="ML_koR"></span>
+      </div>
+    </div>
+
     <div class="m-grid">
       <div class="m-cell"><div class="m-lbl">🏙️ Capital · 首都</div><div class="m-val" id="Mc"></div></div>
       <div class="m-cell"><div class="m-lbl">⚽ Group · 分组</div><div class="m-val" id="Mg"></div></div>
       <div class="m-cell"><div class="m-lbl">🌍 Confederation</div><div class="m-val" id="Mk"></div></div>
-      <div class="m-cell"><div class="m-lbl">🏅 Best Result · 最佳成绩</div><div class="m-val" id="Mb"></div></div>
+      <div class="m-cell"><div class="m-lbl">🏅 Best Result · 最佳</div><div class="m-val" id="Mb"></div></div>
     </div>
     <div class="m-box">
       <div class="m-box-hd">🚩 FLAG MEANING · 国旗含义</div>
@@ -381,212 +377,258 @@
 
 <footer>
   <p><strong>2026 FIFA World Cup</strong> · USA · Canada · Mexico · June 11 – July 19, 2026</p>
-  <p style="margin-top:5px">Learn the flags, know the world · 认识国旗，了解世界</p>
-  <p style="margin-top:5px;font-size:11px;opacity:.6">Group assignments are illustrative — check fifa.com for official data · 分组仅供参考，以FIFA官网为准</p>
+  <p style="margin-top:5px">Learn the flags · 认识国旗 · 国旗を覚えよう · 국기를 알아보자</p>
+  <p style="margin-top:4px;font-size:11px;opacity:.55">Group assignments are illustrative — check fifa.com for official data · 分组仅供参考</p>
 </footer>
 
 <script>
-// ── DATA ──
 const D = [
-  // CONCACAF
-  {f:'🇺🇸',en:'United States',zh:'美国',cap:'Washington D.C.',conf:'CONCACAF',g:'A',best:'3rd place (1930)',
-   me:'The 50 stars represent the 50 states; the 13 alternating red and white stripes honor the original 13 colonies. Red stands for valor and hardiness, white for purity and innocence, blue for vigilance and justice.',
-   mz:'50颗星代表50个州，13道红白条纹代表最初建国的13个殖民地。红色象征勇气，白色象征纯洁，蓝色象征正义与坚守。'},
+  // ── CONCACAF ──
+  {f:'🇺🇸',en:'United States',zh:'美国',ja:'アメリカ',jaR:'Amerika',ko:'미국',koR:'Miguk',
+   cap:'Washington D.C.',conf:'CONCACAF',g:'A',best:'3rd place (1930)',
+   me:'The 50 stars represent the 50 states; the 13 stripes honor the original 13 colonies. Red stands for valor, white for purity, blue for vigilance and justice.',
+   mz:'50颗星代表50个州，13道红白条纹代表最初建国的13个殖民地。红色象征勇气，白色象征纯洁，蓝色象征正义。'},
 
-  {f:'🇲🇽',en:'Mexico',zh:'墨西哥',cap:'Mexico City',conf:'CONCACAF',g:'B',best:'Quarterfinals (1970, 1986)',
-   me:'Green represents hope and independence, white faith and purity, red the blood of national heroes. The central emblem depicts the Aztec founding legend: an eagle atop a cactus devouring a serpent.',
-   mz:'绿色代表希望与独立，白色象征信仰，红色代表先驱的鲜血。中央图案描绘阿兹特克建城神话：鹰在仙人掌上叼蛇。'},
+  {f:'🇲🇽',en:'Mexico',zh:'墨西哥',ja:'メキシコ',jaR:'Mekishiko',ko:'멕시코',koR:'Meksiko',
+   cap:'Mexico City',conf:'CONCACAF',g:'B',best:'Quarterfinals (1970, 1986)',
+   me:'Green for hope and independence, white for faith, red for the blood of national heroes. The central coat of arms depicts the Aztec founding legend: an eagle atop a cactus devouring a serpent.',
+   mz:'绿色代表希望，白色象征信仰，红色代表先驱的鲜血。中央图案描绘阿兹特克建城神话：鹰在仙人掌上叼蛇。'},
 
-  {f:'🇨🇦',en:'Canada',zh:'加拿大',cap:'Ottawa',conf:'CONCACAF',g:'C',best:'Round of 16 (2022)',
-   me:'The red-white-red triband centers on a stylized maple leaf, Canada\'s beloved natural symbol since the 1700s. Red represents sacrifice and passion; white reflects the northern snow and peace.',
-   mz:'红白红三色旗，中央为枫叶——加拿大数百年来最具代表性的自然符号。红色代表热情与牺牲，白色代表北方雪原与和平。'},
+  {f:'🇨🇦',en:'Canada',zh:'加拿大',ja:'カナダ',jaR:'Kanada',ko:'캐나다',koR:'Kaenada',
+   cap:'Ottawa',conf:'CONCACAF',g:'C',best:'Round of 16 (2022)',
+   me:'The red-white-red triband centers on a stylized maple leaf, Canada\'s beloved natural symbol since the 1700s. Red evokes sacrifice and passion; white reflects the northern snow and peace.',
+   mz:'红白红三色旗，中央为枫叶，数百年来加拿大最具代表性的自然符号。红色代表热情与牺牲，白色代表北方雪原与和平。'},
 
-  {f:'🇵🇦',en:'Panama',zh:'巴拿马',cap:'Panama City',conf:'CONCACAF',g:'A',best:'Group stage (2018)',
-   me:'Divided into four quadrants: blue for the Conservative Party, red for the Liberal Party, white for peace between them. The blue star symbolizes purity; the red star civic virtue.',
+  {f:'🇵🇦',en:'Panama',zh:'巴拿马',ja:'パナマ',jaR:'Panama',ko:'파나마',koR:'Panama',
+   cap:'Panama City',conf:'CONCACAF',g:'A',best:'Group stage (2018)',
+   me:'Four quadrants: blue for the Conservative Party, red for the Liberal Party, white for peace between them. The blue star symbolizes purity; the red star civic virtue.',
    mz:'四格旗：蓝色代表保守党，红色代表自由党，白色象征两党间的和平。蓝色五角星象征纯洁，红色五角星象征公民美德。'},
 
-  {f:'🇭🇳',en:'Honduras',zh:'洪都拉斯',cap:'Tegucigalpa',conf:'CONCACAF',g:'C',best:'Group stage (1982)',
-   me:'Blue-white-blue horizontal stripes with five blue stars on the white band, representing the five nations of the former Central American Federation. Blue stands for the Pacific and Caribbean coasts.',
-   mz:'蓝白蓝三色横旗，中间白色部分有五颗蓝星，代表中美洲联邦的五个成员国，蓝色象征太平洋与加勒比海。'},
+  {f:'🇭🇳',en:'Honduras',zh:'洪都拉斯',ja:'ホンジュラス',jaR:'Honjurasu',ko:'온두라스',koR:'Ondurasu',
+   cap:'Tegucigalpa',conf:'CONCACAF',g:'C',best:'Group stage (1982)',
+   me:'Blue-white-blue horizontal stripes with five blue stars on the white band, representing the five nations of the former Central American Federation.',
+   mz:'蓝白蓝三色横旗，中间五颗蓝星代表中美洲联邦的五个成员国，蓝色象征太平洋与加勒比海。'},
 
-  {f:'🇨🇷',en:'Costa Rica',zh:'哥斯达黎加',cap:'San José',conf:'CONCACAF',g:'F',best:'Quarterfinals (2014)',
-   me:'Five horizontal bands — blue, white, red (widest), white, blue. The red stripe, twice as wide, symbolizes the blood of patriots. White represents peace; blue the sky and two ocean coasts.',
-   mz:'蓝白红白蓝五色横旗，红色最宽，象征爱国者的鲜血；白色代表和平；蓝色代表天空与两大洋。'},
+  {f:'🇨🇷',en:'Costa Rica',zh:'哥斯达黎加',ja:'コスタリカ',jaR:'Kosutarika',ko:'코스타리카',koR:'Koseutarika',
+   cap:'San José',conf:'CONCACAF',g:'F',best:'Quarterfinals (2014)',
+   me:'Five horizontal bands — blue, white, red (widest), white, blue. The broad red stripe symbolizes the blood of patriots; white represents peace; blue the sky and two ocean coasts.',
+   mz:'蓝白红白蓝五色横旗，红色最宽象征爱国者的鲜血，白色代表和平，蓝色代表天空与两大洋。'},
 
-  // CONMEBOL
-  {f:'🇦🇷',en:'Argentina',zh:'阿根廷',cap:'Buenos Aires',conf:'CONMEBOL',g:'D',best:'Champions (1978, 1986, 2022)',
-   me:'Light-blue and white horizontal bands frame the golden "Sun of May" (Sol de Mayo), commemorating the moment sunlight burst through clouds during the May Revolution of 1810 — the birth of the Argentine nation.',
-   mz:'浅蓝白蓝三色横旗，中央为"五月太阳"（Sol de Mayo），象征1810年五月革命时阳光穿云而出的历史传说，代表新生的国家。'},
+  // ── CONMEBOL ──
+  {f:'🇦🇷',en:'Argentina',zh:'阿根廷',ja:'アルゼンチン',jaR:'Aruzenchin',ko:'아르헨티나',koR:'Areuhentina',
+   cap:'Buenos Aires',conf:'CONMEBOL',g:'D',best:'Champions (1978, 1986, 2022)',
+   me:'Light-blue and white horizontal bands frame the golden "Sun of May" (Sol de Mayo), commemorating the moment sunlight burst through clouds during the May Revolution of 1810.',
+   mz:'浅蓝白蓝三色横旗，中央为"五月太阳"，象征1810年五月革命时阳光穿云而出的历史传说。'},
 
-  {f:'🇧🇷',en:'Brazil',zh:'巴西',cap:'Brasília',conf:'CONMEBOL',g:'E',best:'Champions (1958,1962,1970,1994,2002)',
-   me:'Green represents the vast forests; the yellow diamond embodies mineral wealth. The blue globe displays the night sky over Rio de Janeiro as it appeared on November 15, 1889 — Republic Day. The white banner reads "Ordem e Progresso."',
-   mz:'绿色代表广袤森林，黄色菱形代表矿产财富，蓝色星球展示1889年11月15日共和国成立时里约热内卢可见的星空，白色缎带上写着"秩序与进步"。'},
+  {f:'🇧🇷',en:'Brazil',zh:'巴西',ja:'ブラジル',jaR:'Burajiru',ko:'브라질',koR:'Beurajiil',
+   cap:'Brasília',conf:'CONMEBOL',g:'E',best:'Champions ×5 (1958–2002)',
+   me:'Green represents forests; the yellow diamond embodies mineral wealth. The blue globe shows the night sky over Rio de Janeiro on Republic Day, November 15, 1889. The banner reads "Ordem e Progresso."',
+   mz:'绿色代表广袤森林，黄色菱形代表矿产财富。蓝色球体展示1889年11月15日共和国成立时里约热内卢的星空，白色缎带写着"秩序与进步"。'},
 
-  {f:'🇨🇴',en:'Colombia',zh:'哥伦比亚',cap:'Bogotá',conf:'CONMEBOL',g:'F',best:'Quarterfinals (2014)',
-   me:'Yellow (widest) for gold, fertile land, and the sun; blue for Colombia\'s Pacific and Caribbean coasts; red for the blood of independence heroes. Inspired by Francisco de Miranda\'s flag of 1806.',
-   mz:'黄色最宽，代表黄金、肥沃土地与太阳；蓝色代表太平洋和加勒比海岸；红色代表独立英雄的鲜血。灵感来自1806年弗朗西斯科·米兰达的旗帜。'},
+  {f:'🇨🇴',en:'Colombia',zh:'哥伦比亚',ja:'コロンビア',jaR:'Koronbia',ko:'콜롬비아',koR:'Kolrombia',
+   cap:'Bogotá',conf:'CONMEBOL',g:'F',best:'Quarterfinals (2014)',
+   me:'Yellow (widest) for gold, fertile land, and the sun; blue for Colombia\'s two ocean coasts; red for the blood of independence heroes.',
+   mz:'黄色最宽代表黄金、肥沃土地与太阳，蓝色代表太平洋和加勒比海岸，红色代表独立英雄的鲜血。'},
 
-  {f:'🇺🇾',en:'Uruguay',zh:'乌拉圭',cap:'Montevideo',conf:'CONMEBOL',g:'H',best:'Champions (1930, 1950)',
-   me:'Nine blue-and-white stripes honor the country\'s original nine departments. The golden "Sun of May" in the upper-left canton shares its symbolic origin with Argentina\'s flag, representing national rebirth.',
-   mz:'九条蓝白条纹代表九个原始省份。左上角的"五月太阳"与阿根廷国旗同根同源，象征民族的新生与独立。'},
+  {f:'🇺🇾',en:'Uruguay',zh:'乌拉圭',ja:'ウルグアイ',jaR:'Uruguai',ko:'우루과이',koR:'Uruguai',
+   cap:'Montevideo',conf:'CONMEBOL',g:'H',best:'Champions (1930, 1950)',
+   me:'Nine blue-and-white stripes honor the nine original departments. The golden "Sun of May" in the upper-left canton shares symbolic origin with Argentina\'s flag.',
+   mz:'九条蓝白条纹代表九个原始省份，左上角"五月太阳"与阿根廷国旗同根同源，象征民族的新生。'},
 
-  {f:'🇪🇨',en:'Ecuador',zh:'厄瓜多尔',cap:'Quito',conf:'CONMEBOL',g:'B',best:'Quarterfinals (2006)',
-   me:'Yellow (widest) for fertile lands and mineral wealth, blue for the Pacific Ocean and sky, red for the blood of revolutionary heroes. The coat of arms features Mount Chimborazo and an Andean condor.',
-   mz:'黄色最宽代表肥沃土地与矿产财富，蓝色代表太平洋与天空，红色代表革命先烈的热血。国徽上有钦博拉索山和安第斯神鹰。'},
+  {f:'🇪🇨',en:'Ecuador',zh:'厄瓜多尔',ja:'エクアドル',jaR:'Ekuadoru',ko:'에콰도르',koR:'Ekwadoreu',
+   cap:'Quito',conf:'CONMEBOL',g:'B',best:'Quarterfinals (2006)',
+   me:'Yellow (widest) for fertile lands and mineral wealth, blue for the Pacific and sky, red for the blood of revolutionary heroes. The coat of arms features Mount Chimborazo.',
+   mz:'黄色最宽代表肥沃土地与矿产，蓝色代表太平洋与天空，红色代表革命先烈的热血。国徽上有钦博拉索山和安第斯神鹰。'},
 
-  {f:'🇨🇱',en:'Chile',zh:'智利',cap:'Santiago',conf:'CONMEBOL',g:'D',best:'3rd place (1962)',
-   me:'A white star on a blue canton sits above red and white horizontal bands. Blue represents the Andean sky and Pacific Ocean, white the eternal Andean snow, red the blood shed for independence.',
-   mz:'左上方蓝色方块内有白色五角星，下方为白红横旗。蓝色代表天空与太平洋，白色代表安第斯雪山，红色代表独立战争的鲜血。'},
+  {f:'🇨🇱',en:'Chile',zh:'智利',ja:'チリ',jaR:'Chiri',ko:'칠레',koR:'Chille',
+   cap:'Santiago',conf:'CONMEBOL',g:'D',best:'3rd place (1962)',
+   me:'A white star on a blue canton sits above red and white horizontal bands. Blue represents the Andean sky, white the eternal snow, red the blood shed for independence.',
+   mz:'左上方蓝色方块内有白色五角星，下方白红横旗。蓝色代表天空，白色代表安第斯雪山，红色代表独立战争的鲜血。'},
 
-  {f:'🇻🇪',en:'Venezuela',zh:'委内瑞拉',cap:'Caracas',conf:'CONMEBOL',g:'K',best:'First knockout round (2026)',
-   me:'Yellow-blue-red horizontal triband with an arc of eight white stars on the blue band, representing the eight provinces that signed the Declaration of Independence in 1811. Yellow for wealth, blue for the ocean, red for courage.',
-   mz:'黄蓝红三色横旗，蓝色部分有八颗弧形白星，代表1811年签署独立宣言的八个原始省份。黄色象征财富，蓝色代表大海，红色代表勇气。'},
+  {f:'🇻🇪',en:'Venezuela',zh:'委内瑞拉',ja:'ベネズエラ',jaR:'Benezuera',ko:'베네수엘라',koR:'Benesuela',
+   cap:'Caracas',conf:'CONMEBOL',g:'K',best:'First knockout round (2026)',
+   me:'Yellow-blue-red triband with an arc of eight white stars on the blue band, representing the eight provinces that signed the 1811 Declaration of Independence.',
+   mz:'黄蓝红三色横旗，蓝色部分有八颗弧形白星，代表1811年签署独立宣言的八个原始省份。'},
 
-  // UEFA
-  {f:'🇫🇷',en:'France',zh:'法国',cap:'Paris',conf:'UEFA',g:'C',best:'Champions (1998, 2018)',
-   me:'The tricolore — blue, white, red — was born from the cockade worn during the French Revolution (1789). Blue symbolizes liberty, white equality, red fraternity. It became the template for dozens of tricolor flags worldwide.',
-   mz:'蓝白红三色旗源自1789年法国大革命时期的帽徽。蓝色象征自由，白色象征平等，红色象征博爱，成为世界上众多三色旗的模板。'},
+  // ── UEFA ──
+  {f:'🇫🇷',en:'France',zh:'法国',ja:'フランス',jaR:'Furansu',ko:'프랑스',koR:'Peurangseu',
+   cap:'Paris',conf:'UEFA',g:'C',best:'Champions (1998, 2018)',
+   me:'The tricolore — blue, white, red — was born from the French Revolution (1789). Blue: liberty. White: equality. Red: fraternity. It became the template for tricolor flags worldwide.',
+   mz:'蓝白红三色旗源自1789年法国大革命。蓝色象征自由，白色象征平等，红色象征博爱，成为世界众多三色旗的模板。'},
 
-  {f:'🇩🇪',en:'Germany',zh:'德国',cap:'Berlin',conf:'UEFA',g:'A',best:'Champions (1954,1974,1990,2014)',
-   me:'The black-red-gold triband traces back to the 1813 German liberation movement. Black represents the darkness of oppression, red the blood shed in the struggle, and gold the dawn of freedom — a beacon of liberal democracy.',
-   mz:'黑红金三色旗源自1813年德意志民族解放战争。黑色代表压迫，红色代表为自由流下的鲜血，金色代表自由的曙光——民主精神的灯塔。'},
+  {f:'🇩🇪',en:'Germany',zh:'德国',ja:'ドイツ',jaR:'Doitsu',ko:'독일',koR:'Dokil',
+   cap:'Berlin',conf:'UEFA',g:'A',best:'Champions (1954,1974,1990,2014)',
+   me:'The black-red-gold triband traces back to the 1813 German liberation movement. Black: oppression. Red: blood shed for freedom. Gold: the dawn of liberty.',
+   mz:'黑红金三色旗源自1813年德意志民族解放战争。黑色代表压迫，红色代表为自由流下的鲜血，金色代表自由的曙光。'},
 
-  {f:'🇪🇸',en:'Spain',zh:'西班牙',cap:'Madrid',conf:'UEFA',g:'D',best:'Champions (2010)',
-   me:'Red-yellow-red horizontal bands frame an intricate royal coat of arms incorporating shields of Castile, León, Aragon, Navarre and Granada, flanked by the Pillars of Hercules — symbols of Spain\'s ancient maritime power.',
-   mz:'红黄红三色横旗，中央复合国徽融合卡斯蒂利亚、莱昂、阿拉贡等历史王国的盾徽，两侧为赫拉克勒斯之柱，象征西班牙古老的海洋霸权。'},
+  {f:'🇪🇸',en:'Spain',zh:'西班牙',ja:'スペイン',jaR:'Supein',ko:'스페인',koR:'Seupein',
+   cap:'Madrid',conf:'UEFA',g:'D',best:'Champions (2010)',
+   me:'Red-yellow-red bands frame the royal coat of arms incorporating shields of Castile, León, Aragon, Navarre and Granada, flanked by the Pillars of Hercules.',
+   mz:'红黄红三色横旗，中央复合国徽融合历史王国盾徽，两侧为赫拉克勒斯之柱，象征西班牙古老的海洋霸权。'},
 
-  {f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',en:'England',zh:'英格兰',cap:'London',conf:'UEFA',g:'G',best:'Champions (1966)',
-   me:'The Cross of St. George — a red cross on a white field — has identified England since at least the 13th century. St. George is England\'s patron saint; the flag is a symbol of chivalry and national pride from the Crusades era.',
-   mz:'圣乔治十字旗——白底红色正十字，自至少13世纪起代表英格兰。圣乔治是英格兰守护神，这面旗帜象征骑士精神，源自十字军东征时代。'},
+  {f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',en:'England',zh:'英格兰',ja:'イングランド',jaR:'Ingurando',ko:'잉글랜드',koR:'Inggeullaendeu',
+   cap:'London',conf:'UEFA',g:'G',best:'Champions (1966)',
+   me:'The Cross of St. George — a red cross on white — has identified England since at least the 13th century. St. George is the patron saint, a symbol of chivalry from the Crusades era.',
+   mz:'圣乔治十字旗——白底红色正十字，自13世纪起代表英格兰。圣乔治是英格兰守护神，这面旗帜象征骑士精神，源自十字军东征时代。'},
 
-  {f:'🇵🇹',en:'Portugal',zh:'葡萄牙',cap:'Lisbon',conf:'UEFA',g:'B',best:'3rd place (1966, 2006)',
-   me:'Green and red vertical bands bracket a central armillary sphere, a navigational instrument symbolizing Portugal\'s Age of Discovery. The shield contains five blue escutcheons (the Moorish kings defeated) and seven gold castles.',
-   mz:'绿红双色竖旗，中央天球仪象征葡萄牙大航海时代。盾徽内含五个蓝色盾形（代表击败的摩尔国王）和七座金色城堡。'},
+  {f:'🇵🇹',en:'Portugal',zh:'葡萄牙',ja:'ポルトガル',jaR:'Porutogaru',ko:'포르투갈',koR:'Poreutugal',
+   cap:'Lisbon',conf:'UEFA',g:'B',best:'3rd place (1966, 2006)',
+   me:'Green and red vertical bands bracket a central armillary sphere — a navigational instrument nodding to Portugal\'s Age of Discovery. The shield contains five escutcheons and seven castles.',
+   mz:'绿红双色竖旗，中央天球仪象征葡萄牙大航海时代。盾徽内含五个蓝色盾形和七座金色城堡。'},
 
-  {f:'🇮🇹',en:'Italy',zh:'意大利',cap:'Rome',conf:'UEFA',g:'G',best:'Champions (1934,1938,1982,2006)',
-   me:'Green-white-red vertical triband, inspired by the French tricolore and first adopted during the Napoleonic era. Green represents the Italian landscape and hope, white the Alps, red the passion and sacrifice of Italian patriots.',
-   mz:'绿白红竖旗，受法国三色旗启发，拿破仑时代首次采用。绿色代表希望与国土，白色象征阿尔卑斯雪山，红色代表爱国者的热情与牺牲。'},
+  {f:'🇮🇹',en:'Italy',zh:'意大利',ja:'イタリア',jaR:'Itaria',ko:'이탈리아',koR:'Itallia',
+   cap:'Rome',conf:'UEFA',g:'G',best:'Champions (1934,1938,1982,2006)',
+   me:'Green-white-red triband, inspired by the French tricolore, adopted during the Napoleonic era. Green: the Italian landscape. White: the Alps. Red: passion and patriots\' sacrifice.',
+   mz:'绿白红竖旗，受法国三色旗启发，拿破仑时代首次采用。绿色代表希望与国土，白色象征阿尔卑斯雪山，红色代表热情与牺牲。'},
 
-  {f:'🇳🇱',en:'Netherlands',zh:'荷兰',cap:'Amsterdam',conf:'UEFA',g:'F',best:'Runner-up (1974,1978,2010)',
-   me:'One of the world\'s oldest tricolor flags, adopted during the Dutch Revolt (16th c.). Originally orange-white-blue (after William of Orange, founder of the Dutch Republic), the orange stripe was later changed to red.',
+  {f:'🇳🇱',en:'Netherlands',zh:'荷兰',ja:'オランダ',jaR:'Oranda',ko:'네덜란드',koR:'Nedellandeu',
+   cap:'Amsterdam',conf:'UEFA',g:'F',best:'Runner-up (1974,1978,2010)',
+   me:'One of the world\'s oldest tricolor flags, adopted during the Dutch Revolt (16th c.). Originally orange-white-blue (for William of Orange); the orange stripe was later changed to red.',
    mz:'世界上最古老的三色旗之一，16世纪荷兰独立战争中采用。最初为橙白蓝（奥兰治亲王的颜色），后橙色改为红色。'},
 
-  {f:'🇧🇪',en:'Belgium',zh:'比利时',cap:'Brussels',conf:'UEFA',g:'H',best:'3rd place (2018)',
-   me:'Black-yellow-red vertical triband derived from the historical coat of arms of the Duchy of Brabant. The golden lion on a black shield had red claws and tongue — these three colors were adopted for independence in 1830.',
-   mz:'黑黄红三色竖旗，取自布拉班特公国历史纹章。黑色盾牌上的金狮有红色利爪和舌头，1830年比利时独立时采用这三种颜色。'},
+  {f:'🇧🇪',en:'Belgium',zh:'比利时',ja:'ベルギー',jaR:'Berugii',ko:'벨기에',koR:'Belgie',
+   cap:'Brussels',conf:'UEFA',g:'H',best:'3rd place (2018)',
+   me:'Black-yellow-red triband derived from the coat of arms of the Duchy of Brabant. The golden lion on a black shield had red claws and tongue — these three colors were adopted at independence in 1830.',
+   mz:'黑黄红三色竖旗，取自布拉班特公国历史纹章。黑色盾牌上金狮的红色利爪和舌头，1830年比利时独立时采用这三种颜色。'},
 
-  {f:'🇨🇭',en:'Switzerland',zh:'瑞士',cap:'Bern',conf:'UEFA',g:'H',best:'Quarterfinals (1934, 1954)',
-   me:'A white equilateral cross on a red field — one of the world\'s oldest flags (13th century). In 1864, Swiss citizen Henri Dunant inverted these colors to create the International Red Cross emblem.',
-   mz:'红底白色等臂十字旗，是世界上最古老的国旗之一（13世纪）。1864年，日内瓦人亨利·杜南以此为基础，颠倒颜色创立了国际红十字会标志。'},
+  {f:'🇨🇭',en:'Switzerland',zh:'瑞士',ja:'スイス',jaR:'Suisu',ko:'스위스',koR:'Seuwiseu',
+   cap:'Bern',conf:'UEFA',g:'H',best:'Quarterfinals (1934, 1954)',
+   me:'A white equilateral cross on red — one of the world\'s oldest flags (13th century). In 1864, Swiss citizen Henri Dunant inverted these colors to create the International Red Cross emblem.',
+   mz:'红底白色等臂十字旗，是世界最古老国旗之一（13世纪）。1864年亨利·杜南以此颠倒颜色创立了国际红十字会标志。'},
 
-  {f:'🇭🇷',en:'Croatia',zh:'克罗地亚',cap:'Zagreb',conf:'UEFA',g:'B',best:'Runner-up (2018)',
-   me:'Red-white-blue horizontal triband carrying the distinctive red-and-white checkerboard coat of arms (šahovnica), a symbol of Croatian identity that predates the modern state by over 900 years.',
-   mz:'红白蓝三色横旗，中央为红白格纹国徽（šahovnica），这一格纹图案是克罗地亚民族身份的象征，历史可追溯至900年前。'},
+  {f:'🇭🇷',en:'Croatia',zh:'克罗地亚',ja:'クロアチア',jaR:'Kuroachia',ko:'크로아티아',koR:'Keuroa-tia',
+   cap:'Zagreb',conf:'UEFA',g:'B',best:'Runner-up (2018)',
+   me:'Red-white-blue triband carrying the red-and-white checkerboard coat of arms (šahovnica), a symbol of Croatian identity with over 900 years of history.',
+   mz:'红白蓝三色横旗，中央红白格纹国徽（šahovnica）是克罗地亚民族身份的象征，历史可追溯至900年前。'},
 
-  {f:'🇵🇱',en:'Poland',zh:'波兰',cap:'Warsaw',conf:'UEFA',g:'K',best:'3rd place (1974, 1982)',
-   me:'Simple white-red horizontal bicolor, derived from the Polish coat of arms: the white eagle on a red shield. One of Europe\'s most elegant flags, using only two colors with no additional emblems.',
+  {f:'🇵🇱',en:'Poland',zh:'波兰',ja:'ポーランド',jaR:'Poorando',ko:'폴란드',koR:'Pollandeu',
+   cap:'Warsaw',conf:'UEFA',g:'K',best:'3rd place (1974, 1982)',
+   me:'Simple white-red horizontal bicolor, derived from the Polish coat of arms: the white eagle on a red shield. One of Europe\'s most elegant flags.',
    mz:'白红双色横旗，源自波兰国徽：红色盾牌上的白色雄鹰。两色无饰，是欧洲最简洁优雅的国旗之一。'},
 
-  {f:'🇺🇦',en:'Ukraine',zh:'乌克兰',cap:'Kyiv',conf:'UEFA',g:'L',best:'Quarterfinals (2006)',
-   me:'A horizontal bicolor: blue over yellow. Blue represents the clear sky above; yellow evokes the golden wheat fields stretching below — a poetic image of Ukraine\'s vast agricultural plains and enduring spirit.',
-   mz:'蓝黄双色横旗，蓝色代表湛蓝天空，黄色代表辽阔金色麦田，完美描绘乌克兰壮阔的农业大平原与不屈的民族精神。'},
+  {f:'🇺🇦',en:'Ukraine',zh:'乌克兰',ja:'ウクライナ',jaR:'Ukuraina',ko:'우크라이나',koR:'Ukeuraina',
+   cap:'Kyiv',conf:'UEFA',g:'L',best:'Quarterfinals (2006)',
+   me:'A horizontal bicolor: blue over yellow. Blue represents the clear sky; yellow evokes the golden wheat fields — a poetic image of Ukraine\'s vast plains and enduring spirit.',
+   mz:'蓝黄双色横旗，蓝色代表湛蓝天空，黄色代表金色麦田，完美描绘乌克兰壮阔的农业大平原与不屈精神。'},
 
-  {f:'🇷🇸',en:'Serbia',zh:'塞尔维亚',cap:'Belgrade',conf:'UEFA',g:'G',best:'Semifinals (1930, as Yugoslavia)',
-   me:'Red-blue-white horizontal triband in pan-Slavic colors representing Slavic solidarity. The coat of arms features a white double-headed eagle — an inheritance from the medieval Serbian Empire.',
+  {f:'🇷🇸',en:'Serbia',zh:'塞尔维亚',ja:'セルビア',jaR:'Serubia',ko:'세르비아',koR:'Serebia',
+   cap:'Belgrade',conf:'UEFA',g:'G',best:'Semifinals (1930, as Yugoslavia)',
+   me:'Red-blue-white triband in pan-Slavic colors, representing Slavic solidarity. The coat of arms features a white double-headed eagle from the medieval Serbian Empire.',
    mz:'红蓝白三色横旗，采用泛斯拉夫颜色象征民族团结。国徽上的白色双头鹰继承自中世纪塞尔维亚帝国。'},
 
-  {f:'🇹🇷',en:'Turkey',zh:'土耳其',cap:'Ankara',conf:'UEFA',g:'I',best:'3rd place (2002)',
-   me:'A white crescent moon and star on a red field, carrying over from the Ottoman Empire\'s banner. Legend says Ottoman founder Osman I dreamed of a crescent moon that grew until it encompassed the entire world.',
-   mz:'红底白色星月旗，沿用自奥斯曼帝国旗帜。传说奥斯曼帝国创始人奥斯曼一世梦见一轮月牙不断扩大直到覆盖整个世界。'},
+  {f:'🇹🇷',en:'Turkey',zh:'土耳其',ja:'トルコ',jaR:'Toruko',ko:'터키',koR:'Teoki',
+   cap:'Ankara',conf:'UEFA',g:'I',best:'3rd place (2002)',
+   me:'A white crescent and star on red, carried over from the Ottoman Empire. Legend says Ottoman founder Osman I dreamed of a crescent moon growing until it spanned the whole world.',
+   mz:'红底白色星月旗，沿用自奥斯曼帝国旗帜。传说奥斯曼帝国创始人奥斯曼一世梦见月牙不断扩大直至覆盖整个世界。'},
 
-  {f:'🇷🇴',en:'Romania',zh:'罗马尼亚',cap:'Bucharest',conf:'UEFA',g:'I',best:'Quarterfinals (1994)',
-   me:'Blue-yellow-red vertical triband representing the three historical principalities: Wallachia (yellow), Moldavia (blue), and Transylvania (red). These colors appeared on Romanian revolutionary flags as early as the 1840s.',
-   mz:'蓝黄红三色竖旗，代表三个历史公国：摩尔达维亚（蓝）、瓦拉几亚（黄）和特兰西瓦尼亚（红）。早在1840年代革命旗帜上便已使用。'},
+  {f:'🇷🇴',en:'Romania',zh:'罗马尼亚',ja:'ルーマニア',jaR:'Ruumania',ko:'루마니아',koR:'Rumania',
+   cap:'Bucharest',conf:'UEFA',g:'I',best:'Quarterfinals (1994)',
+   me:'Blue-yellow-red triband representing three historical principalities: Wallachia, Moldavia, and Transylvania. These colors appeared on Romanian revolutionary flags as early as the 1840s.',
+   mz:'蓝黄红三色竖旗，代表三个历史公国：摩尔达维亚、瓦拉几亚和特兰西瓦尼亚。早在1840年代革命旗帜上便已使用这三色。'},
 
-  {f:'🇦🇹',en:'Austria',zh:'奥地利',cap:'Vienna',conf:'UEFA',g:'J',best:'3rd place (1954)',
-   me:'One of the world\'s oldest flags (circa 1230 CE): red-white-red horizontal bands. According to legend, Duke Leopold V\'s white battle tunic was soaked in blood on all sides — only the area under his belt remained white.',
-   mz:'世界最古老国旗之一（约1230年）：红白红三色横旗。传说奥地利公爵莱奥波尔德五世的白色战袍被血染红，只有腰带下方仍保持白色。'},
+  {f:'🇦🇹',en:'Austria',zh:'奥地利',ja:'オーストリア',jaR:'Oosutoria',ko:'오스트리아',koR:'Oseuteulia',
+   cap:'Vienna',conf:'UEFA',g:'J',best:'3rd place (1954)',
+   me:'One of the world\'s oldest flags (circa 1230 CE): red-white-red horizontal bands. Legend: Duke Leopold V\'s white battle tunic was soaked in blood on all sides — only the area under his belt remained white.',
+   mz:'世界最古老国旗之一（约1230年）：红白红三色横旗。传说公爵的白色战袍被血染红，只有腰带下方仍保持白色。'},
 
-  // CAF
-  {f:'🇲🇦',en:'Morocco',zh:'摩洛哥',cap:'Rabat',conf:'CAF',g:'A',best:'Semifinals (2022)',
-   me:'A deep red field bearing a green interlaced pentagram (Seal of Solomon) at its center. Red is the royal color of the Alaoui dynasty; the green star represents Islam\'s five pillars and Morocco\'s membership across five continents.',
-   mz:'深红底旗，中央为绿色五角星（所罗门之印）。红色是阿拉维王朝的王室颜色，绿色五角星象征伊斯兰五功，以及摩洛哥跨越五大洲的联系。'},
+  // ── CAF ──
+  {f:'🇲🇦',en:'Morocco',zh:'摩洛哥',ja:'モロッコ',jaR:'Morokko',ko:'모로코',koR:'Moroko',
+   cap:'Rabat',conf:'CAF',g:'A',best:'Semifinals (2022)',
+   me:'A deep red field bearing a green interlaced pentagram (Seal of Solomon). Red is the royal color of the Alaoui dynasty; the green star represents Islam\'s five pillars.',
+   mz:'深红底旗，中央为绿色五角星（所罗门之印）。红色是阿拉维王朝的王室颜色，绿色五角星象征伊斯兰五功。'},
 
-  {f:'🇸🇳',en:'Senegal',zh:'塞内加尔',cap:'Dakar',conf:'CAF',g:'B',best:'Runner-up (2002)',
-   me:'Green-yellow-red vertical triband with a central green star. Green represents Islam and agriculture, yellow stands for mineral wealth and prosperity, red embodies the sacrifice of independence fighters.',
-   mz:'绿黄红三色竖旗，中央为绿色五角星。绿色代表伊斯兰与农业，黄色代表矿产财富与繁荣，红色象征独立战士的牺牲精神。'},
+  {f:'🇸🇳',en:'Senegal',zh:'塞内加尔',ja:'セネガル',jaR:'Senegaru',ko:'세네갈',koR:'Senegal',
+   cap:'Dakar',conf:'CAF',g:'B',best:'Runner-up (2002)',
+   me:'Green-yellow-red triband with a central green star. Green: Islam and agriculture. Yellow: mineral wealth. Red: the sacrifice of independence fighters.',
+   mz:'绿黄红三色竖旗，中央为绿色五角星。绿色代表伊斯兰与农业，黄色代表矿产财富，红色象征独立战士的牺牲。'},
 
-  {f:'🇳🇬',en:'Nigeria',zh:'尼日利亚',cap:'Abuja',conf:'CAF',g:'F',best:'Quarterfinals (1994)',
-   me:'A simple yet powerful green-white-green vertical triband. Green represents Nigeria\'s fertile agricultural land and abundant natural resources; white stands for peace and unity between the country\'s many ethnic groups.',
-   mz:'绿白绿三色竖旗，设计简洁有力。绿色代表尼日利亚肥沃的农业土地和丰富自然资源；白色代表国内众多民族之间的和平与团结。'},
+  {f:'🇳🇬',en:'Nigeria',zh:'尼日利亚',ja:'ナイジェリア',jaR:'Naijeria',ko:'나이지리아',koR:'Naijeria',
+   cap:'Abuja',conf:'CAF',g:'F',best:'Quarterfinals (1994)',
+   me:'A simple green-white-green triband. Green represents Nigeria\'s fertile land and natural resources; white stands for peace and unity among its many ethnic groups.',
+   mz:'绿白绿三色竖旗，设计简洁有力。绿色代表肥沃土地和丰富自然资源，白色代表众多民族之间的和平与团结。'},
 
-  {f:'🇨🇲',en:'Cameroon',zh:'喀麦隆',cap:'Yaoundé',conf:'CAF',g:'H',best:'Quarterfinals (1990)',
-   me:'Green-red-yellow vertical triband with a central gold star. Green represents the southern rainforests, red symbolizes national unity and the center, yellow stands for the northern savannas and the sun.',
-   mz:'绿红黄三色竖旗，中央有金色五角星。绿色代表南部雨林，红色象征全国统一，黄色代表北部大草原与太阳的光芒。'},
+  {f:'🇨🇲',en:'Cameroon',zh:'喀麦隆',ja:'カメルーン',jaR:'Kameruun',ko:'카메룬',koR:'Kamerun',
+   cap:'Yaoundé',conf:'CAF',g:'H',best:'Quarterfinals (1990)',
+   me:'Green-red-yellow triband with a central gold star. Green: southern rainforests. Red: national unity. Yellow: northern savannas and the sun.',
+   mz:'绿红黄三色竖旗，中央有金色五角星。绿色代表南部雨林，红色象征全国统一，黄色代表北部大草原与太阳。'},
 
-  {f:'🇿🇦',en:'South Africa',zh:'南非',cap:'Pretoria',conf:'CAF',g:'I',best:'Group stage (2010, as hosts)',
-   me:'The world\'s most colorful national flag: six colors forming a horizontal Y-shape (pall). The converging paths symbolize unity from diversity. Colors draw from the ANC, the old Boer republics, and the British colonial ensign.',
-   mz:'世界上色彩最丰富的国旗：六色旗，中央绿色Y形代表不同道路走向统一，象征多元一体。颜色融合自非国大、布尔共和国与英国殖民旗帜。'},
+  {f:'🇿🇦',en:'South Africa',zh:'南非',ja:'南アフリカ',jaR:'Minami Afurika',ko:'남아공',koR:'Namaegong',
+   cap:'Pretoria',conf:'CAF',g:'I',best:'Group stage (2010, as hosts)',
+   me:'Six colors forming a horizontal Y-shape (pall). The converging paths symbolize unity from diversity. Colors draw from the ANC, the Boer republics, and the British colonial ensign.',
+   mz:'六色旗，中央绿色Y形代表不同道路走向统一，象征多元一体。颜色融合自非国大、布尔共和国与英国殖民旗帜。'},
 
-  {f:'🇨🇮',en:"Côte d'Ivoire",zh:'科特迪瓦',cap:"Yamoussoukro",conf:'CAF',g:'J',best:'Group stage (2006, 2010)',
-   me:'Orange-white-green vertical triband. Orange represents the northern savanna and the spirit of development; white stands for peace and unity; green represents the coastal rainforests and hope for the future.',
-   mz:'橙白绿三色竖旗。橙色代表北方大草原与发展精神，白色象征和平与团结，绿色代表沿海雨林与对未来的希望。'},
+  {f:'🇨🇮',en:"Côte d'Ivoire",zh:'科特迪瓦',ja:'コートジボワール',jaR:'Kōto Jibowaaru',ko:'코트디부아르',koR:'Koteu Dibuareu',
+   cap:'Yamoussoukro',conf:'CAF',g:'J',best:'Group stage (2006, 2010)',
+   me:'Orange-white-green triband. Orange: northern savanna and development. White: peace and unity. Green: coastal rainforests and hope.',
+   mz:'橙白绿三色竖旗。橙色代表北方大草原与发展精神，白色象征和平与团结，绿色代表沿海雨林与希望。'},
 
-  {f:'🇪🇬',en:'Egypt',zh:'埃及',cap:'Cairo',conf:'CAF',g:'K',best:'Group stage (1990)',
-   me:'Red-white-black horizontal triband with the golden Eagle of Saladin at center. Red symbolizes the 1952 revolution; white represents peace and a bright future; black marks the end of colonial oppression.',
-   mz:'红白黑三色横旗，中央为金色萨拉丁之鹰。红色象征1952年革命，白色代表和平与光明的未来，黑色标志着殖民统治压迫的终结。'},
+  {f:'🇪🇬',en:'Egypt',zh:'埃及',ja:'エジプト',jaR:'Ejiputo',ko:'이집트',koR:'Ijipteu',
+   cap:'Cairo',conf:'CAF',g:'K',best:'Group stage (1990)',
+   me:'Red-white-black triband with the golden Eagle of Saladin at center. Red: the 1952 revolution. White: peace and the future. Black: the end of colonial oppression.',
+   mz:'红白黑三色横旗，中央为金色萨拉丁之鹰。红色象征1952年革命，白色代表和平，黑色标志殖民统治的终结。'},
 
-  {f:'🇲🇱',en:'Mali',zh:'马里',cap:'Bamako',conf:'CAF',g:'L',best:'Group stage (debut 2026)',
-   me:'Green-yellow-red vertical triband in pan-African colors. Green represents agriculture and Islam; yellow stands for mineral wealth, especially gold (ancient Mali was legendary for it); red honors the sacrifice of independence fighters.',
-   mz:'绿黄红三色竖旗，采用泛非颜色。绿色代表农业与伊斯兰，黄色代表矿产财富（古马里王国以黄金著称），红色向独立战士的牺牲致敬。'},
+  {f:'🇲🇱',en:'Mali',zh:'马里',ja:'マリ',jaR:'Mari',ko:'말리',koR:'Malli',
+   cap:'Bamako',conf:'CAF',g:'L',best:'Group stage (debut 2026)',
+   me:'Green-yellow-red triband in pan-African colors. Green: agriculture and Islam. Yellow: mineral wealth, especially gold (ancient Mali was legendary for it). Red: independence fighters\' sacrifice.',
+   mz:'绿黄红三色竖旗，采用泛非颜色。绿色代表农业与伊斯兰，黄色代表矿产财富（古马里以黄金著称），红色向独立战士致敬。'},
 
-  {f:'🇩🇿',en:'Algeria',zh:'阿尔及利亚',cap:'Algiers',conf:'CAF',g:'C',best:'Group stage (2014)',
-   me:'Equal green and white halves, with a red crescent and star at center. Green and white are traditional Islamic colors; the red crescent and star symbolize faith and progress. Red also honors martyrs of the War of Independence.',
-   mz:'绿白各半，中央有红色星月。绿色和白色是伊斯兰传统颜色，红色星月象征信仰与进步，红色也向独立战争的烈士致敬。'},
+  {f:'🇩🇿',en:'Algeria',zh:'阿尔及利亚',ja:'アルジェリア',jaR:'Arujeria',ko:'알제리',koR:'Aljeri',
+   cap:'Algiers',conf:'CAF',g:'C',best:'Group stage (2014)',
+   me:'Equal green and white halves with a red crescent and star. Green and white are traditional Islamic colors; the red crescent and star symbolize faith and the martyrs of the War of Independence.',
+   mz:'绿白各半，中央有红色星月。绿色和白色是伊斯兰传统颜色，红色星月象征信仰，也向独立战争的烈士致敬。'},
 
-  {f:'🇹🇳',en:'Tunisia',zh:'突尼斯',cap:'Tunis',conf:'CAF',g:'H',best:'Group stage (1978–2022)',
-   me:'A red field with a central white disk containing a red crescent and star. The red-and-white colors and crescent-star symbolism are inherited from the Ottoman Empire and represent Islam and national identity.',
+  {f:'🇹🇳',en:'Tunisia',zh:'突尼斯',ja:'チュニジア',jaR:'Chunijia',ko:'튀니지',koR:'Twiniji',
+   cap:'Tunis',conf:'CAF',g:'H',best:'Group stage (1978–2022)',
+   me:'A red field with a white disk containing a red crescent and star. Red-and-white colors and the crescent-star symbolism are inherited from the Ottoman Empire.',
    mz:'红色旗帜，中央白色圆圈内有红色星月。红白配色与星月图案继承自奥斯曼帝国，代表伊斯兰信仰与民族认同。'},
 
-  // AFC
-  {f:'🇯🇵',en:'Japan',zh:'日本',cap:'Tokyo',conf:'AFC',g:'D',best:'Quarterfinals (2022)',
-   me:'A crimson disc on a white field — the Nisshōki ("sun-mark flag"). Japan has been called the "Land of the Rising Sun" (日本, Nihon) since ancient times. The red circle is one of the world\'s most immediately recognizable symbols.',
+  // ── AFC ──
+  {f:'🇯🇵',en:'Japan',zh:'日本',ja:'日本',jaR:'Nihon',ko:'일본',koR:'Ilbon',
+   cap:'Tokyo',conf:'AFC',g:'D',best:'Quarterfinals (2022)',
+   me:'A crimson disc on a white field — the Nisshōki ("sun-mark flag"). Japan has been called the "Land of the Rising Sun" (日本, Nihon) since ancient times.',
    mz:'白底红圆旗，名为"日章旗"（日の丸）。日本自古被称为"日出之国"，红色圆圈是全球最具辨识度的国旗图案之一。'},
 
-  {f:'🇰🇷',en:'South Korea',zh:'韩国',cap:'Seoul',conf:'AFC',g:'E',best:'Semifinals (2002)',
-   me:'The Taegukgi features a red-blue yin-yang (taeguk) at center, surrounded by four black trigrams representing heaven, earth, water, and fire. Together they embody Taoist cosmic balance and the cycle of continuous change.',
-   mz:'太极旗：中央红蓝阴阳图（太极）象征宇宙平衡，四角四组八卦（乾坤坎离）分别代表天、地、水、火，体现东方哲学的宇宙观。'},
+  {f:'🇰🇷',en:'South Korea',zh:'韩国',ja:'韓国',jaR:'Kankoku',ko:'대한민국',koR:'Daehan Minguk',
+   cap:'Seoul',conf:'AFC',g:'E',best:'Semifinals (2002)',
+   me:'The Taegukgi features a red-blue yin-yang at center, surrounded by four black trigrams (heaven, earth, water, fire) — an emblem of Taoist cosmic balance.',
+   mz:'太极旗：中央红蓝阴阳图象征宇宙平衡，四角四组八卦（乾坤坎离）分别代表天、地、水、火，体现东方哲学宇宙观。'},
 
-  {f:'🇮🇷',en:'Iran',zh:'伊朗',cap:'Tehran',conf:'AFC',g:'G',best:'Group stage',
-   me:'Green-white-red horizontal triband. The border bands repeat "Allahu Akbar" (God is greatest) in Kufic script 22 times, honoring the date of the 1979 revolution. The central emblem stylizes "Allah" as a sword and an open book.',
-   mz:'绿白红三色横旗，上下边缘以库法体重复书写"真主至大"22次，纪念1979年伊斯兰革命（公历第22天）。中央图案将"安拉"字形组合为宝剑与书本。'},
+  {f:'🇮🇷',en:'Iran',zh:'伊朗',ja:'イラン',jaR:'Iran',ko:'이란',koR:'Iran',
+   cap:'Tehran',conf:'AFC',g:'G',best:'Group stage',
+   me:'Green-white-red triband. The borders repeat "Allahu Akbar" 22 times in Kufic script, honoring the date of the 1979 revolution. The central emblem stylizes "Allah" as a sword and open book.',
+   mz:'绿白红三色横旗，上下边缘以库法体重复书写"真主至大"22次，纪念1979年伊斯兰革命。中央图案将"安拉"字形组合为宝剑与书本。'},
 
-  {f:'🇸🇦',en:'Saudi Arabia',zh:'沙特阿拉伯',cap:'Riyadh',conf:'AFC',g:'K',best:'Quarterfinals (1994)',
-   me:'A green field bearing the Shahada ("There is no god but God, and Muhammad is his prophet") in Thuluth script, above a horizontal sword. Green is Islam\'s traditional color; the sword represents the absolute authority of the House of Saud.',
-   mz:'绿底旗，白色草书写着清真言："万物非主，唯有真主，穆罕默德是其使者"，下方为一把宝剑。绿色是伊斯兰传统颜色，宝剑象征沙特王室的绝对权威。'},
+  {f:'🇸🇦',en:'Saudi Arabia',zh:'沙特阿拉伯',ja:'サウジアラビア',jaR:'Sauji Arabia',ko:'사우디아라비아',koR:'Saudi Arabia',
+   cap:'Riyadh',conf:'AFC',g:'K',best:'Quarterfinals (1994)',
+   me:'A green field bearing the Shahada in white Thuluth script above a horizontal sword. Green is Islam\'s traditional color; the sword represents the absolute authority of the House of Saud.',
+   mz:'绿底旗，白色草书写着清真言，下方为一把宝剑。绿色是伊斯兰传统颜色，宝剑象征沙特王室的绝对权威。'},
 
-  {f:'🇦🇺',en:'Australia',zh:'澳大利亚',cap:'Canberra',conf:'AFC',g:'I',best:'Quarterfinals (2006)',
-   me:'A British Blue Ensign with the seven-pointed Commonwealth Star below the Union Jack, and the Southern Cross constellation on the right. The Union Jack reflects Commonwealth ties; the Southern Cross marks Australia\'s place in the southern hemisphere.',
-   mz:'深蓝底旗，左上角为英国国旗（体现英联邦身份），左下方为七角联邦之星，右侧为南十字星座，标志着澳大利亚在南半球的地理位置。'},
+  {f:'🇦🇺',en:'Australia',zh:'澳大利亚',ja:'オーストラリア',jaR:'Oosutoraria',ko:'호주',koR:'Hoju',
+   cap:'Canberra',conf:'AFC',g:'I',best:'Quarterfinals (2006)',
+   me:'British Blue Ensign with the seven-pointed Commonwealth Star below the Union Jack and the Southern Cross on the right. The Union Jack reflects Commonwealth ties; the Southern Cross marks the southern hemisphere.',
+   mz:'深蓝底旗，左上角为英国国旗（体现英联邦身份），左下方为七角联邦之星，右侧为南十字星座。'},
 
-  {f:'🇶🇦',en:'Qatar',zh:'卡塔尔',cap:'Doha',conf:'AFC',g:'J',best:'Group stage (2022, as hosts)',
-   me:'A maroon field with a white band on the hoist, separated by nine-pointed serration. The nine points honor Qatar as the ninth emirate to join the Trucial States in 1916. White represents peace; maroon evolved from the purple dye once traded here.',
-   mz:'深红色旗帜，右侧有白色区域，以九个锯齿分隔。九个锯齿纪念卡塔尔是1916年第九个加入特鲁西尔地区的酋长国。白色代表和平，深红色源自古时当地贸易的紫色染料。'},
+  {f:'🇶🇦',en:'Qatar',zh:'卡塔尔',ja:'カタール',jaR:'Kataaru',ko:'카타르',koR:'Katareu',
+   cap:'Doha',conf:'AFC',g:'J',best:'Group stage (2022, as hosts)',
+   me:'Maroon and white separated by nine-pointed serration. The nine points honor Qatar as the ninth emirate to join the Trucial States in 1916. White represents peace.',
+   mz:'深红色旗帜，以九个锯齿分隔白色区域。九个锯齿纪念卡塔尔是1916年第九个加入特鲁西尔地区的酋长国，白色代表和平。'},
 
-  {f:'🇺🇿',en:'Uzbekistan',zh:'乌兹别克斯坦',cap:'Tashkent',conf:'AFC',g:'L',best:'Group stage (debut 2026)',
-   me:'Light blue-white-green horizontal triband separated by thin red stripes. Blue represents sky and water (echoing the Timurid era); white stands for peace; green for nature and new life. The crescent and 12 stars represent the 12 months.',
-   mz:'蓝白绿三色横旗，以细红线间隔。蓝色象征天空与水（呼应帖木儿时代），白色代表和平，绿色代表自然与新生。月牙与12颗星代表一年12个月。'},
+  {f:'🇺🇿',en:'Uzbekistan',zh:'乌兹别克斯坦',ja:'ウズベキスタン',jaR:'Uzubekisutan',ko:'우즈베키스탄',koR:'Ujebekisutan',
+   cap:'Tashkent',conf:'AFC',g:'L',best:'Group stage (debut 2026)',
+   me:'Light blue-white-green triband separated by thin red stripes. Blue: sky and water. White: peace. Green: nature and new life. The crescent and 12 stars represent the 12 months.',
+   mz:'蓝白绿三色横旗，以细红线间隔。蓝色象征天空与水，白色代表和平，绿色代表自然与新生，月牙与12颗星代表12个月。'},
 
-  {f:'🇯🇴',en:'Jordan',zh:'约旦',cap:'Amman',conf:'AFC',g:'L',best:'Group stage (debut 2026)',
-   me:'Black-white-green horizontal triband with a red triangle on the hoist. The three bands represent the Abbasid, Umayyad, and Fatimid caliphates; the red triangle honors the Hashemite dynasty. The white seven-pointed star represents the seven verses of the Quran\'s opening surah.',
-   mz:'黑白绿三色横旗，左侧红色三角形。三色分别代表阿拔斯、倭马亚、法蒂玛三个哈里发王朝，红色三角形代表哈希姆王朝，白色七角星象征《古兰经》开篇七节。'},
+  {f:'🇯🇴',en:'Jordan',zh:'约旦',ja:'ヨルダン',jaR:'Yorudan',ko:'요르단',koR:'Yoreudan',
+   cap:'Amman',conf:'AFC',g:'L',best:'Group stage (debut 2026)',
+   me:'Black-white-green triband with a red triangle on the hoist. The three bands represent three historic caliphates; the red triangle honors the Hashemite dynasty. The white seven-pointed star symbolizes the seven verses of the Quran\'s opening surah.',
+   mz:'黑白绿三色横旗，左侧红色三角形代表哈希姆王朝。三色分别代表阿拔斯、倭马亚、法蒂玛三个哈里发王朝，白色七角星象征《古兰经》开篇七节。'},
 
-  // OFC
-  {f:'🇳🇿',en:'New Zealand',zh:'新西兰',cap:'Wellington',conf:'OFC',g:'J',best:'Group stage (1982, 2010)',
-   me:'A British Blue Ensign with the Southern Cross in red (outlined in white) on the right. The Union Jack represents the Commonwealth bond; the four-star Southern Cross identifies New Zealand\'s location in the South Pacific.',
-   mz:'深蓝底旗，左上角为英国国旗（象征英联邦关系），右侧四颗红色白边星星勾勒出南十字座，标志新西兰在南太平洋的地理位置。'},
+  // ── OFC ──
+  {f:'🇳🇿',en:'New Zealand',zh:'新西兰',ja:'ニュージーランド',jaR:'Nyuujīrando',ko:'뉴질랜드',koR:'Nyujillaendeu',
+   cap:'Wellington',conf:'OFC',g:'J',best:'Group stage (1982, 2010)',
+   me:'British Blue Ensign with the Southern Cross in red (outlined in white) on the right. The Union Jack represents the Commonwealth bond; the four-star Southern Cross identifies New Zealand in the South Pacific.',
+   mz:'深蓝底旗，左上角为英国国旗（象征英联邦关系），右侧四颗红色白边星星勾勒南十字座，标志新西兰在南太平洋的地理位置。'},
 ];
-
 D.forEach((c,i)=>c.i=i);
 
 // ── THEME ──
@@ -605,17 +647,50 @@ function toggleMode(){
   });
 })();
 
+// ── LANGUAGE TOGGLE ──
+let langMode='en', filt='', srch='';
+
+const qHints={
+  en:'Which country does this flag belong to?',
+  zh:'这是哪个国家的国旗？',
+  ja:'この国旗はどの国ですか？',
+  ko:'이 국기는 어느 나라 국기인가요?'
+};
+
+function getName(c,l){ return c[l]||c.en; }
+function getOthers(c,l){
+  return ['en','zh','ja','ko'].filter(x=>x!==l).map(x=>c[x]).join(' · ');
+}
+
+document.getElementById('lbtns').addEventListener('click',e=>{
+  const b=e.target.closest('.lbtn');if(!b)return;
+  document.querySelectorAll('.lbtn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  langMode=b.dataset.l;
+  render();
+  // update quiz hint if on quiz tab
+  const hint=document.getElementById('Qhint');
+  if(hint)hint.textContent=qHints[langMode];
+});
+
 // ── FILTERS ──
-let filt='',srch='';
 function render(){
   srch=document.getElementById('qi').value.trim().toLowerCase();
-  const out=D.filter(c=>(!filt||c.conf===filt)&&(!srch||c.en.toLowerCase().includes(srch)||c.zh.includes(srch)));
-  document.getElementById('clbl').textContent=`Showing ${out.length} of ${D.length} teams · 显示 ${out.length} / ${D.length} 支球队`;
+  const out=D.filter(c=>{
+    const mf=!filt||c.conf===filt;
+    const ms=!srch||
+      c.en.toLowerCase().includes(srch)||c.zh.includes(srch)||
+      c.ja.includes(srch)||c.ko.includes(srch)||
+      (c.jaR&&c.jaR.toLowerCase().includes(srch))||
+      (c.koR&&c.koR.toLowerCase().includes(srch));
+    return mf&&ms;
+  });
+  document.getElementById('clbl').textContent=`Showing ${out.length} of ${D.length} teams · 显示 ${out.length}/${D.length} 支球队`;
   document.getElementById('grid').innerHTML=out.map((c,i)=>`
     <div class="card" style="animation-delay:${Math.min(i*.025,.65)}s" onclick="openM(${c.i})">
       <span class="c-flag">${c.f}</span>
-      <div class="c-en">${c.en}</div>
-      <div class="c-zh">${c.zh}</div>
+      <div class="c-primary">${getName(c,langMode)}</div>
+      <div class="c-others">${getOthers(c,langMode)}</div>
       <span class="badge ${c.conf}">${c.conf}</span>
     </div>`).join('');
 }
@@ -631,6 +706,13 @@ function openM(i){
   document.getElementById('Mf').textContent=c.f;
   document.getElementById('Men').textContent=c.en;
   document.getElementById('Mzh').textContent=c.zh;
+  document.getElementById('ML_en').textContent=c.en;
+  document.getElementById('ML_zh').textContent=c.zh;
+  document.getElementById('ML_zhR').textContent='';
+  document.getElementById('ML_ja').textContent=c.ja;
+  document.getElementById('ML_jaR').textContent=c.jaR;
+  document.getElementById('ML_ko').textContent=c.ko;
+  document.getElementById('ML_koR').textContent=c.koR;
   document.getElementById('Mc').textContent=c.cap;
   document.getElementById('Mg').textContent='Group '+c.g+' · 第'+c.g+'组';
   document.getElementById('Mk').textContent=c.conf;
@@ -657,7 +739,7 @@ function renderGroups(){
             <span class="gc-tf">${t.f}</span>
             <div>
               <div class="gc-en">${t.en}</div>
-              <div class="gc-zh">${t.zh}</div>
+              <div class="gc-sub-names">${t.zh} · ${t.ja} · ${t.ko}</div>
             </div>
           </div>`).join('')}
       </div>
@@ -672,34 +754,35 @@ function showQ(){
   const pool=D.filter(x=>x!==c).sort(()=>Math.random()-.5).slice(0,3);
   const opts=[...pool,c].sort(()=>Math.random()-.5);
   const fl=document.getElementById('Qf');
-  fl.textContent=c.f; fl.className='qf';
+  fl.textContent=c.f;fl.className='qf';
+  document.getElementById('Qhint').textContent=qHints[langMode];
   document.getElementById('Qn').classList.remove('show');
   document.getElementById('Qo').innerHTML=opts.map(o=>`
     <button class="opt" onclick="checkQ(this,'${o.i}','${c.i}')">
-      ${o.f} ${o.en}<small>${o.zh}</small>
+      ${o.f} ${getName(o,langMode)}<small>${getOthers(o,langMode)}</small>
     </button>`).join('');
-  document.getElementById('Qo').dataset.ci=c.i;
 }
 function checkQ(btn,sel,correct){
-  if(Qa)return; Qa=true; Qt++;
+  if(Qa)return;Qa=true;Qt++;
   document.getElementById('Qt').textContent=Qt;
   document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
   if(sel===correct){
-    btn.classList.add('ok'); Qs++; Qk++; Qh.push('ok');
+    btn.classList.add('ok');Qs++;Qk++;Qh.push('ok');
     document.getElementById('Qf').classList.add('bounce');
   } else {
-    btn.classList.add('no'); Qk=0; Qh.push('no');
+    btn.classList.add('no');Qk=0;Qh.push('no');
     document.getElementById('Qf').classList.add('shake');
-    document.querySelectorAll('.opt').forEach(b=>{if(b.dataset&&b.innerHTML.includes('data-ci')||false)return;if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes(",'"+correct+"'"))b.classList.add('ok');});
-    // find correct button
-    document.querySelectorAll('.opt').forEach(b=>{const m=b.getAttribute('onclick').match(/'(\d+)','(\d+)'/);if(m&&m[1]===correct)b.classList.add('ok');});
+    document.querySelectorAll('.opt').forEach(b=>{
+      const m=b.getAttribute('onclick').match(/'(\d+)','(\d+)'/);
+      if(m&&m[1]===correct)b.classList.add('ok');
+    });
   }
   document.getElementById('Qs').textContent=Qs;
   document.getElementById('Qk').textContent=Qk;
   document.getElementById('Qn').classList.add('show');
   document.getElementById('Qp').innerHTML=Qh.slice(-24).map(h=>`<div class="dot ${h}"></div>`).join('');
-  const acc=Qt?Math.round(Qs/Qt*100):0;
-  document.getElementById('Qa').innerHTML=Qt>=3?`Accuracy <em>${acc}%</em> · 正确率 <em>${acc}%</em> · ${Qt} answered`:'';
+  const pct=Qt?Math.round(Qs/Qt*100):0;
+  document.getElementById('Qa').innerHTML=Qt>=3?`Accuracy <em>${pct}%</em> · 正确率 <em>${pct}%</em> · ${Qt} answered`:'';
 }
 function nextQ(){showQ();}
 
@@ -712,7 +795,6 @@ function go(id,btn){
   if(id==='quiz'&&Qt===0)showQ();
 }
 
-// ── INIT ──
 render();
 renderGroups();
 </script>
